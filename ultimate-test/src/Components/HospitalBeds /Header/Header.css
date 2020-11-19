@@ -1,0 +1,22 @@
+.HeaderWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    min-height: 64px;
+}
+
+.OrganizationWrapper {
+    margin: 9px 0px 0px 64px;
+
+}
+
+.ButtonWrapper {
+    margin: 12px 64px 0px 0px;
+}
+
+.btnStyle{
+    width: 88px;
+    height: 40px;
+    border-radius: 8px;
+}

@@ -9,8 +9,8 @@ const Organization = () => {
                 <img src={tyumenLogo} alt=""/>
             </div>
             <div className="organizationText">
-                <p className="organizationTitle">Информационная система “Коечный фонд - бронирование”</p>
-                <p className="signature">Департамент информатизации Тюменской области</p>
+                <div><p className="organizationTitle">Информационная система “Коечный фонд - бронирование”</p></div>
+                <div><p className="signature">Департамент информатизации Тюменской области</p></div>
             </div>
         </div>
     )

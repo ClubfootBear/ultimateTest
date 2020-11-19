@@ -1,0 +1,12 @@
+.ContentWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: #282c34 solid 1px;
+    height: 100%;
+    width: 100%;
+}
+
+.OuterWrapper {
+    margin: 64px 64px;
+}

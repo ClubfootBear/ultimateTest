@@ -1,11 +1,11 @@
 .organizationInfo {
     /*max-width: 620px;*/
-    /*max-height: 48px;*/
+    max-height: 48px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     border: #282c34 solid 0px;
-
+    align-items: center;
 }
 
 .tyumenLogo {
@@ -15,28 +15,52 @@
 .tyumenLogo img {
     width: 61px;
     height: 48px;
+    /*background-color: dimgrey;*/
 }
 
-/*.organizationText {*/
+.organizationText {
+    /*min-height: 100vh;*/
+    /*padding-left: 20px;*/
+    /*padding-right: 20px;*/
+    /*padding-top: 0px;*/
+    /*padding-bottom: 15px;*/
+    display: flex;
+    flex-direction: column;
+    /*align-items: flex-end;*/
+    justify-content: center;
+    /*color: #2c888d;*/
+    /*background-color:brown ;*/
+}
 
-/*}*/
+
 
 .organizationTitle {
     /*font-family: Inter;*/
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
+    line-height: 22px;
+    padding-top: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    /*background-color: #282c34;*/
 }
 
 .signature {
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
+    line-height: 22px;
     opacity: 45%;
+    padding: 0px;
+    margin-bottom: -5px;
+    margin-top: -3px;
 }
 
 
-p {
-    padding: 0;
-    margin: 0;
-}
+/*.organizationText p {*/
+/*    padding: 0px;*/
+/*    margin: 0px;*/
+/*    !*color: aqua;*!*/
+/*}*/
+

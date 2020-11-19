@@ -1,0 +1,9 @@
+.HospitalBedsWrapper {
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: space-between;*/
+    background: #F0F2F5;
+    min-height: 100vh;
+
+}
+

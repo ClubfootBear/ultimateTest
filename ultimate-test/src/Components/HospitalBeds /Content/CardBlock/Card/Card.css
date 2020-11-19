@@ -1,0 +1,24 @@
+.Card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 24px;
+
+    width: 424px;
+
+    /*max-width: 424px;*/
+    /*min-width: 324px;*/
+    height: 224px;
+    border-radius: 16px;
+    background-color: #FFFFFF;
+
+    /*flex-basis: 25%;*/
+}
+
+.ActionButtonCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #282c34;
+}
