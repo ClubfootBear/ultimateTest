@@ -1,3 +1,7 @@
+.WrapperCard {
+    margin-bottom: 32px;
+}
+
 
 .Card {
     display: flex;

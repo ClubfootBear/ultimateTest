@@ -1,3 +1,7 @@
+.WrapperCardBlock{
+    margin-top: 16px;
+}
+
 .CardBlock {
     width: 100%;
     display: flex;
