@@ -1,11 +1,23 @@
 .organizationInfo {
-    /*max-width: 620px;*/
     max-height: 48px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     border: #282c34 solid 0px;
     align-items: center;
+}
+
+@media (max-width: 635px) {
+    .organizationInfo {
+        /*max-width: 620px;*/
+        max-height: 48px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border: #282c34 solid 0px;
+        align-items: center;
+        margin-bottom: 16px;
+    }
 }
 
 .tyumenLogo {
@@ -32,8 +44,6 @@
     /*background-color:brown ;*/
 }
 
-
-
 .organizationTitle {
     /*font-family: Inter;*/
     font-style: normal;
@@ -57,10 +67,4 @@
     margin-top: -3px;
 }
 
-
-/*.organizationText p {*/
-/*    padding: 0px;*/
-/*    margin: 0px;*/
-/*    !*color: aqua;*!*/
-/*}*/
 

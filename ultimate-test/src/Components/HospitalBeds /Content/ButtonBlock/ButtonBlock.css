@@ -1,6 +1,6 @@
 .ButtonWrapperBlock {
     width: 100%;
-    margin-bottom: 16px;
+    margin-top: 16px;
     /*background-color: brown;*/
     /*border: brown solid 1px;*/
 }
@@ -11,11 +11,9 @@
     /*width: 100%;*/
     display: flex;
     flex-direction: row;
-    /*justify-content: space-between;*/
     justify-content: space-around;
     flex-wrap: wrap;
     /*background-color: #282c34;*/
-
 }
 
 .ButtonBlock {
@@ -29,11 +27,16 @@
 }
 
 .ActionButton {
-    min-width: 200px;
+    /*width: 200px;*/
+    /*width: 300px;*/
     height: 40px;
     border-radius: 8px;
+    margin-bottom: 16px;
+    /*margin-top: 16px;*/
     /*background-color: brown;*/
 }
+
+
 
 .Plug {
     width: 424px;

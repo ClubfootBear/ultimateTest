@@ -3,5 +3,93 @@
     flex-direction: row;
     justify-content: space-between;
 
-    border: red solid 1px;
+    margin-bottom: 16px;
+
+    /*border: red solid 1px;*/
+}
+
+.DepartmentDropDown a {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+
+}
+
+.DepartmentDropDown > a:hover {
+    color: #1890FF;
+}
+
+.HospitalBeds p {
+    margin-top: -10px;
+    margin-bottom: 0;
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 38px;
+    line-height: 76px;
+    color: rgba(0, 0, 0, 0.85);
+    /*background-color: #282c34;*/
+}
+
+@media (max-width: 560px) {
+    .HospitalBeds p {
+        margin-top: 0px;
+        margin-bottom: 10px;
+        text-align: unset;
+
+        /*font-family: Inter;*/
+        font-style: normal;
+        font-weight: 300;
+        font-size: 38px;
+        line-height: 36px;
+        color: rgba(0, 0, 0, 0.85);
+        /*background-color: #1890FF;*/
+    }
+
+}
+
+.TotalStatusTags {
+    display: flex;
+    flex-direction: row;
+
+    /*text-align: center;*/
+    /*justify-content: space-between;*/
+    margin-top: -5px;
+    margin-bottom: 0px;
+
+
+    /*font-family: Inter;*/
+    /*font-style: normal;*/
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 28px;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.TotalStatusTags span {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 28px;
+    color: rgba(24, 144, 255, 0.65);;
+}
+
+.TotalStatusTags {
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.Free {
+    margin-right: 10px;
+}
+
+.Busy{
+    margin-right: 16px;
+}
+
+.Total {}
+
+@media (max-width: 560px) {
+    .HospitalPosition {
+        text-align: right;
+    }
 }

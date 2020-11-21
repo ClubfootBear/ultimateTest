@@ -4,17 +4,17 @@ import { Menu } from 'antd';
 
 export const menu = (
     <Menu>
-        <Menu.Item>
+        <Menu.Item className="DepartmentDropDown">
             <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
                 Первое отделение
             </a>
         </Menu.Item>
-        <Menu.Item>
+        <Menu.Item className="DepartmentDropDown">
             <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
                 Второе отделение
             </a>
         </Menu.Item>
-        <Menu.Item>
+        <Menu.Item className="DepartmentDropDown">
             <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
                 Третье отделение
             </a>

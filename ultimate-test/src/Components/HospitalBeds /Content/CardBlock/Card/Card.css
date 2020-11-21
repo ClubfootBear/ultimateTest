@@ -1,24 +1,50 @@
-.WrapperCard {
-    margin-bottom: 32px;
-}
-
-
-.Card {
+#WrapperCard {
+    display: -webkit-flex;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    padding: 24px;
-
-    width: 424px;
-    /*max-width: 424px;*/
-    /*min-width: 324px;*/
-    height: 224px;
-    border-radius: 16px;
-    background-color: #FFFFFF;
-
-    /*flex-basis: 25%;*/
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    /*align-items: stretch;*/
+    /*justify-content: space-between;*/
+    margin-bottom: 32px;
+    max-width: 424px;
 }
+
+@media (min-width: 560px) {
+    .Card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 24px;
+
+        -webkit-flex: auto;
+        flex: auto;
+
+        width: 424px;
+        /*width: 100%;*/
+        /*min-width: 324px;*/
+        height: 224px;
+        border-radius: 16px;
+        background-color: #FFFFFF;
+
+        /*flex-basis: 25%;*/
+    }
+}
+
+@media (max-width: 560px) {
+    .Card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 12px;
+        height: 224px;
+        width: 300px;
+        border-radius: 16px;
+        background-color: #FFFFFF;
+
+        /*flex-basis: 25%;*/
+    }
+}
+
 
 .Card div h3 {
     font-style: normal;
@@ -33,7 +59,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-/*background-color: #282c34;*/
+
+    /*background-color: #282c34;*/
 }
 
 .StatusButtonCard {
@@ -48,7 +75,20 @@
     background-color: #F0F2F5;
 }
 
+@media (max-width: 560px) {
+    .StatusButtonCard {
+        display: flex;
+        flex-direction: row;
 
+        /*text-align: center;*/
+        justify-content: space-between;
+        width: 136px;
+        margin: 0 8px;
+
+        border-radius: 8px;
+        background-color: #F0F2F5;
+    }
+}
 .StatusBusy {
     display: flex;
     align-items: center;

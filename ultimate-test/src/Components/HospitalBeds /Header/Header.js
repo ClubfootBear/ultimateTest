@@ -11,7 +11,7 @@ const Header = () => {
                 <Organization />
             </div>
             <div className="ButtonWrapper">
-                <Button className="btnStyle" type="primary" danger>Button</Button>
+                <Button className="btnStyle Btn560" type="primary" danger>Войти</Button>
             </div>
         </div>
     )

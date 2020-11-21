@@ -10,10 +10,10 @@ const ButtonBlock = () => {
             <div className="ButtonBlock">
                 {/*<div className="Plug"></div>*/}
                 <div className="ButtonInnerWrapper">
-                    <Button className="ActionButton" type="primary">Изменить число мест</Button>
-                    <Button className="ActionButton">Перевести пациентов</Button>
-                    <Button className="ActionButton">Выписать пациентов</Button>
-                    <Button className="ActionButton">
+                    <Button className="ActionButton Btn560" type="primary">Изменить число мест</Button>
+                    <Button className="ActionButton Btn560">Перевести пациентов</Button>
+                    <Button className="ActionButton Btn560">Выписать пациентов</Button>
+                    <Button className="ActionButton Btn560">
                         <InfoCircleOutlined />
                         Места в других отделениях
                     </Button>

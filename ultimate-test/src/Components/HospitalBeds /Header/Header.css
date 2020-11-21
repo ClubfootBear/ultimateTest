@@ -3,8 +3,24 @@
     flex-direction: row;
     justify-content: space-between;
     background-color: #FFFFFF;
+    /*background-color: #282c34;*/
+    /*min-height: 128px;*/
     min-height: 64px;
 }
+
+@media (max-width: 635px) {
+    .HeaderWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: #FFFFFF;
+        /*background-color: #282c34;*/
+        min-height: auto;
+        /*padding-top: 36px;*/
+        /*min-height: 64px;*/
+    }
+}
+
 
 .OrganizationWrapper {
     margin: 9px 0px 0px 64px;
@@ -19,4 +35,25 @@
     width: 88px;
     height: 40px;
     border-radius: 8px;
+    /*background-color: #1890FF;*/
 }
+
+@media (max-width: 635px) {
+    .ButtonWrapper {
+        padding-top: 20px;
+        padding-bottom: 12px;
+        margin: auto;
+    }
+}
+
+/*@media (max-width: 635px) {*/
+/*    .btnStyle {*/
+/*        width: 88px;*/
+/*        height: 40px;*/
+/*        border-radius: 8px;*/
+/*        width: 200px;*/
+/*        !*background-color: #1890FF;*!*/
+/*    }*/
+/*}*/
+
+
