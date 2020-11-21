@@ -1,6 +1,7 @@
 import { Form, Input, Button, Checkbox } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import {UserOutlined, LockOutlined, InfoCircleOutlined} from '@ant-design/icons';
 import "./LoginForm.css"
+import React from "react";
 
 
 const NormalLoginForm = () => {
@@ -17,47 +18,49 @@ const NormalLoginForm = () => {
             }}
             onFinish={onFinish}
         >
-            <Form.Item
-                name="username"
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please input your Username!',
-                    },
-                ]}
-            >
-                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Введите логин" />
-            </Form.Item>
-            <Form.Item
-                name="password"
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please input your Password!',
-                    },
-                ]}
-            >
-                <Input
-                    prefix={<LockOutlined className="site-form-item-icon" />}
-                    type="password"
-                    placeholder="Password"
-                />
-            </Form.Item>
-            <Form.Item>
-                <Form.Item name="remember" valuePropName="checked" noStyle>
-                    <Checkbox>Remember me</Checkbox>
+
+            <div className="LoginFormWrapper">
+                <div className="Enter">
+                    Вход
+                </div>
+                <Form.Item
+                    name="username"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Пожалуйста, введите свой логин!',
+                        },
+                    ]}
+                >
+                    <Input className="BtnForm"
+                           prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Введите логин" />
                 </Form.Item>
+                <Form.Item
+                    name="password"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Пожалуйста, введите свой пароль!',
+                        },
+                    ]}
+                >
+                    <Input.Password className="BtnForm"
+                                    prefix={<LockOutlined className="site-form-item-icon " />}
+                                    type="password"
+                                    placeholder="Password"
+                    />
+                </Form.Item>
+                <Form.Item>
+                    <Button type="primary" htmlType="submit" className="login-form-button BtnForm">
+                        Войти
+                    </Button>
+                </Form.Item>
+                <div className="CantEnter">
+                    <InfoCircleOutlined style={{marginRight: '8px'}}/>
+                    Не можете войти?</div>
+                <div className="HelpInfo">Свяжитесь с технической поддержкой по номеру телефона 72-72-72</div>
+            </div>
 
-                <a className="login-form-forgot" href="">
-                    Forgot password
-                </a>
-            </Form.Item>
-
-            <Form.Item>
-                <Button type="primary" htmlType="submit" className="login-form-button">
-                    Log in
-                </Button>
-            </Form.Item>
         </Form>
     );
 };

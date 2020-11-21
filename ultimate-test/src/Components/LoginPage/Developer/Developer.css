@@ -1,0 +1,35 @@
+.Developer {
+    position: absolute;
+    right: 64.38px;
+    /*right: 19.37%;*/
+    /*top: 26.29%;*/
+    bottom: 66.9px;
+
+    /*background: rgba(0, 0, 0, 0.45);*/
+
+}
+
+.DeveloperSignature {
+    margin-bottom: 10px;
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    /* or 157% */
+
+    display: flex;
+    align-items: center;
+
+    color: rgba(0, 0, 0, 0.45);
+}
+
+@media (max-width: 560px) {
+    .Developer {
+        position: absolute;
+        right: 220px;
+        bottom: 10.9px;
+        /*background: rgba(0, 0, 0, 0.45);*/
+    }
+}

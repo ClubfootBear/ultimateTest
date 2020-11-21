@@ -3,6 +3,7 @@ import 'antd/dist/antd.css'
 import NormalLoginForm from "./LoginForm/LoginForm";
 import "./LoginPage.css"
 import Organization from "./Orzanization/Orzanization";
+import Developer from "./Developer/Developer";
 
 
 const LoginPage = () => {
@@ -16,6 +17,7 @@ const LoginPage = () => {
                     <Organization/>
                 </div>
             </div>
+            <Developer />
         </div>
     )
 }
