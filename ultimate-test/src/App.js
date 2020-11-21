@@ -5,8 +5,8 @@ import HospitalBeds from "./Components/HospitalBeds /HospitalBeds";
 function App() {
   return (
       <div className="app">
-              <LoginPage />
-              {/*<HospitalBeds/>*/}
+              {/*<LoginPage />*/}
+              <HospitalBeds/>
       </div>
 );
 }

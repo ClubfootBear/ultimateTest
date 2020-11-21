@@ -3,6 +3,7 @@ import "./Content.css"
 import StatusBlock from "./StatusBlock/StatusBlock";
 import ButtonBlock from "./ButtonBlock/ButtonBlock";
 import CardBlock from "./CardBlock/CardBlock";
+import EditingPlaces from "./Modals/EditingPlaces/EditingPlaces";
 
 
 const Content = () => {
@@ -12,6 +13,9 @@ const Content = () => {
                 <StatusBlock />
                 <ButtonBlock />
                 <CardBlock />
+                //Пока ХЗ куда это пихать
+                <EditingPlaces />
+
             </div>
         </div>
     )
