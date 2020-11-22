@@ -1,0 +1,130 @@
+.ModalWrap {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    right: 0px;
+    top: 0px;
+    background: rgba(240, 242, 245, 0.65);
+    backdrop-filter: blur(4px);
+    /*z-index: 1;*/
+}
+
+.EditingPlacesForm{
+    position: absolute;
+    z-index: 5;
+
+    width: 472px;
+    height: 584px;
+    padding: 16px;
+    right: calc(50% - 472px/2);
+    top: calc(50% - 640px/2);
+
+    border-radius: 16px;
+    background: #FFFFFF;
+}
+
+
+.EditingHeaderForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 40px;
+
+    /*font-family: Inter;*/
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.NameGroup {
+    /*font-family: Inter;*/
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 28px;
+    /* or 200% */
+
+    display: flex;
+    align-items: center;
+    /* @heading-color */
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.GroupMargin {
+    margin-bottom: 32px;
+}
+
+.DropDownWrapper {
+    margin-top: 0px;
+}
+
+.TransferButtonWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    width: 216px;
+}
+
+.Decline {
+    width: 88px;
+}
+
+.Save {
+    width: 120px;
+}
+
+.IBStyle {
+    height: 40px;
+    border-radius: 8px;
+}
+
+.Input {
+    width: 216px;
+}
+
+@media (max-width: 560px) {
+    .TransferButtonWrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        position: absolute;
+        right: 16px;
+        /*left: 16px;*/
+        width: 318px;
+    }
+
+    .EditingPlacesForm {
+        /*position: relative;*/
+        z-index: 5;
+
+        width: 350px;
+        /*height: 580p;*/
+        padding: 16px;
+        right: calc(50% - 350px / 2);
+        top: calc(50% - 680px / 2);
+
+        border-radius: 16px;
+        background: #FFFFFF;
+    }
+
+    .Input {
+        width: 150px;
+    }
+
+    .Save {
+        width: 150px;
+    }
+
+    .Decline {
+        width: 150px;
+    }
+}
