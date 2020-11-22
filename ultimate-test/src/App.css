@@ -1,3 +1,6 @@
+
+
+
 * {
   box-sizing: border-box;
 }
@@ -7,7 +10,9 @@ body {
   /*margin: 0;*/
   font-family: 'Inter', monospace;
   line-height: 1.5;
-  background-color: #F0F2F5;
+  /*background-color: #F0F2F5;*/
+
+
 }
 
 .app {
@@ -25,4 +30,5 @@ body {
 /*.InnerWrap {*/
 /*  margin-right: 64px;*/
 /*}*/
+
 

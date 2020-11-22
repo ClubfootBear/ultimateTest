@@ -4,15 +4,15 @@ import "./FormLine.css"
 const FormLine = (props) => {
     return(
         <div className="FormLineWrapper">
-            <div>{props.typePlaces}</div>
+            <div className="PlaceType">{props.typePlaces}</div>
             <div className="FormLineInnerWrapper">
                 <div>
-                    <div>Всего</div>
-                    <div><input className="IBStyle Input" type="text" placeholder={30}/></div>
+                    <div className="PlaceStyle">Всего</div>
+                    <div><input className="IBStyle Input InputType" type="text" placeholder={30}/></div>
                 </div>
                 <div>
-                    <div>Занято</div>
-                    <div><input className="IBStyle Input" type="text" placeholder={15}/></div>
+                    <div className="PlaceStyle">Занято</div>
+                    <div><input className="IBStyle Input InputType" type="text" placeholder={15}/></div>
                 </div>
             </div>
 

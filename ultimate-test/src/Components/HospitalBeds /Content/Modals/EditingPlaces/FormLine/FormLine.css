@@ -1,9 +1,55 @@
-
-
 .FormLineInnerWrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
     margin-bottom: 32px;
+}
+
+@media (max-width: 560px) {
+    .FormLineInnerWrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 32px;
+        /*flex-wrap: wrap;*/
+        /*background-color: #282c34;*/
+    }
+}
+
+
+.PlaceType {
+    /*font-family: Inter;*/
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 28px;
+    /* or 200% */
+
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.PlaceStyle {
+    /*height: 16px;*/
+
+    /*font-family: Inter;*/
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 28px;
+    /* or 233% */
+
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.InputType {
+    /*font-family: Inter;*/
+    padding-left: 12px;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+/* identical to box height, or 157% */
+
+    color: rgba(0, 0, 0, 0.65);
 }

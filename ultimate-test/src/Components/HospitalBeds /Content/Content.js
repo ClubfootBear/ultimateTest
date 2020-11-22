@@ -8,7 +8,7 @@ import EditingPlaces from "./Modals/EditingPlaces/EditingPlaces";
 
 const Content = () => {
     return(
-        <div className="OuterWrapper">
+        <div className="OuterWrapper" >
             <div className="ContentWrapper">
                 <StatusBlock />
                 <ButtonBlock />

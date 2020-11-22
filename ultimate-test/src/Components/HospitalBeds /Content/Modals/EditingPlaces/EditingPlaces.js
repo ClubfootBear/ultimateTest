@@ -1,6 +1,7 @@
 import React from "react"
 import "./EditingPlaces.css"
 import { Button } from 'antd';
+import {CloseOutlined} from '@ant-design/icons';
 import FormLine from "./FormLine/FormLine";
 
 const EditingPlaces = () => {
@@ -8,19 +9,21 @@ const EditingPlaces = () => {
 
 
     return(
+        <div className="ModalWrap">
             <form className="EditingPlacesForm" action="#">
                 <div className="EditingHeaderForm">
                     <div>Редактирование мест</div>
-                    <div>Х</div>
+                    <div><CloseOutlined /></div>
                 </div>
                 <div className="EditingContent">
-                    { PlacesType.map( (p) => <FormLine typePlaces={p} />)}
+                    {PlacesType.map((p) => <FormLine typePlaces={p}/>)}
                 </div>
                 <div className="EditingButtonWrapper">
-                    <Button className="IBStyle">Отмена</Button>
-                    <Button className="IBStyle" type="primary">Сохранить</Button>
+                    <Button className="IBStyle Decline">Отмена</Button>
+                    <Button className="IBStyle Save" type="primary">Сохранить</Button>
                 </div>
             </form>
+        </div>
     )
 }
 
