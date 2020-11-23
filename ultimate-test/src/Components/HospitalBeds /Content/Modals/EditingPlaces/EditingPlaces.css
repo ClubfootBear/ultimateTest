@@ -40,11 +40,20 @@
     color: rgba(0, 0, 0, 0.8);
 }
 
+.HRStayle {
+    position: absolute;
+    border-bottom: 1px solid #F2F2F2;
+    width: 500px;
+    left: -25px;
+}
+
 .EditingButtonWrapper {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
+    /*Изменить позиционирование на*/
+    /*margin-left: auto;*/
     position: absolute;
     right: 16px;
     width: 216px;

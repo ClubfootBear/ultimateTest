@@ -10,7 +10,11 @@ const RadioGroup = (props) => {
         height: '30px',
         lineHeight: '30px',
         alignItems: 'center',
-        marginBottom: '3px',
+        marginBottom: '2px',
+    };
+
+    const RadioWrapper = {
+        marginTop: '10px',
     };
 
     const Array = [...props.Array]
@@ -24,12 +28,12 @@ const RadioGroup = (props) => {
         setValue( e.target.value )
     }
 
-    return(
-        <Radio.Group onChange={onChange} value={value}>
-            <div>
-                {Group}
-            </div>
-        </Radio.Group>
+    return (
+            <Radio.Group onChange={onChange} value={value} style={RadioWrapper}>
+                <div>
+                    {Group}
+                </div>
+            </Radio.Group>
     )
 }
 

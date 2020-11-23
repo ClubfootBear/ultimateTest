@@ -28,13 +28,16 @@ const menu = (
 );
 
 const DropDownModal = (props) => {
-    return(
-        <Dropdown overlay={menu}>
-            <Button className="ButtonDropDown">
-                Выберите отделение
-                <DownOutlined />
-            </Button>
-        </Dropdown>
+    return (
+
+        <div className="DropDownWrapper">
+            <Dropdown overlay={menu}>
+                <Button className="ButtonDropDown">
+                    Выберите отделение
+                    <DownOutlined/>
+                </Button>
+            </Dropdown>
+        </div>
     )
 }
 

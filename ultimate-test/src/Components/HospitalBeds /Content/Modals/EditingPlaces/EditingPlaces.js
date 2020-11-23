@@ -15,6 +15,7 @@ const EditingPlaces = () => {
                     <div>Редактирование мест</div>
                     <div><CloseOutlined /></div>
                 </div>
+                <div className="HRStayle"/>
                 <div className="EditingContent">
                     {PlacesType.map((p) => <FormLine typePlaces={p}/>)}
                 </div>

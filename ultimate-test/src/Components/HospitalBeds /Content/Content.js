@@ -5,6 +5,7 @@ import ButtonBlock from "./ButtonBlock/ButtonBlock";
 import CardBlock from "./CardBlock/CardBlock";
 import EditingPlaces from "./Modals/EditingPlaces/EditingPlaces";
 import PatientsTransfer from "./Modals/PatientsTransfer/PatientsTransfer";
+import PatientsDischarge from "./Modals/PatientsDischarge/PatientsDischarge";
 
 
 const Content = () => {
@@ -16,7 +17,8 @@ const Content = () => {
                 <CardBlock />
                 //Пока ХЗ куда это пихать
                 {/*<EditingPlaces />*/}
-                <PatientsTransfer />
+                {/*<PatientsTransfer />*/}
+                <PatientsDischarge />
 
             </div>
         </div>
