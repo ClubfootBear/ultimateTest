@@ -8,16 +8,15 @@ import {useHospital} from "../../../../Context/HospitalContext";
 const ButtonBlock = (props) => {
 
     const {DischargeSwitcher, EditingPlacesSwitcher, TransferSwitcher} = useHospital();
-    // console.log("onCloseDischarge is = " + onCloseDischarge)
 
     return(
         <div className="ButtonWrapperBlock">
             <div className="ButtonBlock">
                 {/*<div className="Plug"></div>*/}
                 <div className="ButtonInnerWrapper">
-                    <Button onClick={EditingPlacesSwitcher.onCloseEditing} className="ActionButton Btn560" type="primary">Изменить число мест</Button>
-                    <Button onClick={TransferSwitcher.onCloseTransfer} className="ActionButton Btn560">Перевести пациентов</Button>
-                    <Button onClick={DischargeSwitcher.onCloseDischarge} className="ActionButton Btn560">Выписать пациентов</Button>
+                    <Button onClick={EditingPlacesSwitcher.toggleView} className="ActionButton Btn560" type="primary">Изменить число мест</Button>
+                    <Button onClick={TransferSwitcher.toggleView} className="ActionButton Btn560">Перевести пациентов</Button>
+                    <Button onClick={DischargeSwitcher.toggleView} className="ActionButton Btn560">Выписать пациентов</Button>
                     <Button className="ActionButton Btn560">
                         <InfoCircleOutlined />
                         Места в других отделениях

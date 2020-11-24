@@ -18,9 +18,9 @@ const Content = () => {
                 <StatusBlock />
                 <ButtonBlock />
                 <CardBlock />
-                {EditingPlacesSwitcher.ShowEditing && <EditingPlaces /> }
-                {TransferSwitcher.ShowTransfer && <PatientsTransfer/>}
-                {DischargeSwitcher.ShowDischarge && <PatientsDischarge />}
+                {EditingPlacesSwitcher.showModal && <EditingPlaces /> }
+                {TransferSwitcher.showModal && <PatientsTransfer/>}
+                {DischargeSwitcher.showModal && <PatientsDischarge />}
             </div>
         </div>
     )

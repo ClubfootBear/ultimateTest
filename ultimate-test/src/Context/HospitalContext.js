@@ -6,6 +6,7 @@ export const useHospital = () => useContext(HospitalContext);
 export function HospitalProvider({ children }) {
     //Discharge Modal Places
     const [ShowDischarge, setShowDischarge] = useState(false);
+    const DischargeFieldName = "Выписка пациентов";
 
     const onCloseDischarge = () => {
         setShowDischarge(!ShowDischarge)
@@ -13,35 +14,42 @@ export function HospitalProvider({ children }) {
     }
 
     const DischargeSwitcher = {
-        ShowDischarge: ShowDischarge,
-        onCloseDischarge: onCloseDischarge,
+        showModal: ShowDischarge,
+        toggleView: onCloseDischarge,
+        modalNameField :DischargeFieldName,
     }
 
-
-    //Editing Modal Places
-    const [ShowEditing, setShowEditing] = useState(false);
-
-    const onCloseEditing = () => {
-        setShowEditing(!ShowEditing)
-    }
-
-    const EditingPlacesSwitcher = {
-        ShowEditing: ShowEditing,
-        onCloseEditing: onCloseEditing,
-    }
-
-
-    //Editing Modal Transfer
+    //Transfer Modal
     const [ShowTransfer, setShowTransfer] = useState(false);
+    const TransferFieldName = "Перевод пациентов";
 
     const onCloseTransfer = () => {
         setShowTransfer(!ShowTransfer)
     }
 
     const TransferSwitcher = {
-        ShowTransfer: ShowTransfer,
-        onCloseTransfer: onCloseTransfer,
+        showModal: ShowTransfer,
+        toggleView: onCloseTransfer,
+        modalNameField: TransferFieldName,
     }
+
+
+
+    //Editing Modal Places
+    const [ShowEditing, setShowEditing] = useState(false);
+    const EditingFieldName = "Редактирование мест";
+
+    const onCloseEditing = () => {
+        setShowEditing(!ShowEditing)
+    }
+
+    const EditingPlacesSwitcher = {
+        showModal: ShowEditing,
+        toggleView: onCloseEditing,
+        modalNameField: EditingFieldName,
+    }
+
+
 
 
 

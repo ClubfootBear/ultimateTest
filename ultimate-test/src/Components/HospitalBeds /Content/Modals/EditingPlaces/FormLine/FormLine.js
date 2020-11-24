@@ -1,5 +1,6 @@
 import React from "react"
 import "./FormLine.css"
+import { Input } from 'antd';
 
 const FormLine = (props) => {
     return(
@@ -8,14 +9,14 @@ const FormLine = (props) => {
             <div className="FormLineInnerWrapper">
                 <div>
                     <div className="PlaceStyle">Всего</div>
-                    <div><input className="IBStyle Input InputType" type="text" placeholder={30}/></div>
+                    <input className="IBStyle Input InputType" type="text" placeholder={30}/>
                 </div>
                 <div>
                     <div className="PlaceStyle">Занято</div>
-                    <div><input className="IBStyle Input InputType" type="text" placeholder={15}/></div>
+                    <input className="IBStyle Input InputType" type="text" placeholder={15}/>
+                    {/*<Input className="IBStyle Input InputType" placeholder="Basic usage" placeholder={15} />*/}
                 </div>
             </div>
-
         </div>
     )
 }
