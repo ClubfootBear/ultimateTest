@@ -1,22 +1,24 @@
-import React from "react"
+import React, {useContext, useState} from "react"
 import "./PatientsDischarge.css"
 import {CloseOutlined} from "@ant-design/icons";
 import {Button} from "antd";
 import RadioGroup from "../CommonModals/RadioGroup/RadioGroup";
 import DropDownModal from "../CommonModals/DropDownModal/DropDownModal";
+import {HospitalContext, useHospital} from "../../../../../Context/HospitalContext";
 
 
 
-const PatientsDischarge = () => {
+const PatientsDischarge = (props) => {
     const PlacesType1 = ['Мужчина', 'Женщина', 'Мужчина с кислородом', 'Женщина с кислородом']
-    const PlacesType2 = ['Мужские', 'Женские', 'Мужские с кислородом', 'Женские с кислородом']
+
+    const {DischargeSwitcher} = useHospital();
 
     return(
         <div className="ModalWrap">
             <form className="DischargePlacesForm" action="#">
                 <div className="DischargeHeaderForm">
                     <div>Выписка пациентов</div>
-                    <div><CloseOutlined /></div>
+                    <div><CloseOutlined onClick={DischargeSwitcher.onCloseDischarge}/></div>
                 </div>
                 <div className='HRStayleTop'/>
                 <div className="GroupMargin">
@@ -25,7 +27,7 @@ const PatientsDischarge = () => {
                 </div>
                 <div className='HRStayleBottom'/>
                 <div className="DischargeButtonWrapper">
-                    <Button className="IBStyle Decline">Отмена</Button>
+                    <Button onClick={DischargeSwitcher.onCloseDischarge} className="IBStyle Decline">Отмена</Button>
                     <Button className="IBStyle Save" type="primary">Сохранить</Button>
                 </div>
             </form>

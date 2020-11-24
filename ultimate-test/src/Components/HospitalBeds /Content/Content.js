@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext, useState} from "react";
 import "./Content.css"
 import StatusBlock from "./StatusBlock/StatusBlock";
 import ButtonBlock from "./ButtonBlock/ButtonBlock";
@@ -6,20 +6,21 @@ import CardBlock from "./CardBlock/CardBlock";
 import EditingPlaces from "./Modals/EditingPlaces/EditingPlaces";
 import PatientsTransfer from "./Modals/PatientsTransfer/PatientsTransfer";
 import PatientsDischarge from "./Modals/PatientsDischarge/PatientsDischarge";
+import {useHospital} from "../../../Context/HospitalContext";
 
 
 const Content = () => {
+    const {DischargeSwitcher, EditingPlacesSwitcher, TransferSwitcher} = useHospital();
+
     return(
         <div className="OuterWrapper" >
             <div className="ContentWrapper">
                 <StatusBlock />
                 <ButtonBlock />
                 <CardBlock />
-                //Пока ХЗ куда это пихать
-                {/*<EditingPlaces />*/}
-                {/*<PatientsTransfer />*/}
-                <PatientsDischarge />
-
+                {EditingPlacesSwitcher.ShowEditing && <EditingPlaces /> }
+                {TransferSwitcher.ShowTransfer && <PatientsTransfer/>}
+                {DischargeSwitcher.ShowDischarge && <PatientsDischarge />}
             </div>
         </div>
     )

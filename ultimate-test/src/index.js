@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { HospitalProvider } from "./Context/HospitalContext";
 
 ReactDOM.render(
   <React.StrictMode>
       <div className="bodyDiv">
-          <App />
+          <HospitalProvider>
+              <App/>
+          </HospitalProvider>
       </div>
 
   </React.StrictMode>,

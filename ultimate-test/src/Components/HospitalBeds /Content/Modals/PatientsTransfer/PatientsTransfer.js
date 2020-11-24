@@ -4,8 +4,11 @@ import {CloseOutlined} from "@ant-design/icons";
 import {Button} from "antd";
 import RadioGroup from "../CommonModals/RadioGroup/RadioGroup";
 import DropDownModal from "../CommonModals/DropDownModal/DropDownModal";
+import {useHospital} from "../../../../../Context/HospitalContext";
 
 const PatientsTransfer = () => {
+    const {TransferSwitcher} = useHospital();
+
 
     const PlacesType1 = ['Мужчина', 'Женщина', 'Мужчина с кислородом', 'Женщина с кислородом']
     const PlacesType2 = ['Мужские', 'Женские', 'Мужские с кислородом', 'Женские с кислородом']
@@ -15,7 +18,7 @@ const PatientsTransfer = () => {
             <form className="TransferPlacesForm" action="#">
                 <div className="TransferHeaderForm">
                     <div>Перевод пациентов</div>
-                    <div><CloseOutlined /></div>
+                    <div><CloseOutlined onClick={TransferSwitcher.onCloseTransfer}/></div>
                 </div>
                 <div className='HRStayleTop'/>
                 <div className="GroupMargin">
@@ -32,7 +35,7 @@ const PatientsTransfer = () => {
                 </div>
                 <div className='HRStayleBottom'/>
                 <div className="TransferButtonWrapper">
-                    <Button className="IBStyle Decline">Отмена</Button>
+                    <Button onClick={TransferSwitcher.onCloseTransfer} className="IBStyle Decline">Отмена</Button>
                     <Button className="IBStyle Save" type="primary">Сохранить</Button>
                 </div>
             </form>
