@@ -1,12 +1,20 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
+// import Modals from "./ModalContext/ModalContext";
+// import {DischargeSwitcher} from './ModalContext/ModalContext';
+
 
 export const HospitalContext = createContext();
 export const useHospital = () => useContext(HospitalContext);
 
+// const DischargeSwitcher = DischargeSwitcher;
+// const EditingPlacesSwitcher = Modals.EditingPlacesSwitcher;
+// const TransferSwitcher = Modals.TransferSwitcher;
+
+
 export function HospitalProvider({ children }) {
     //Discharge Modal Places
     const [ShowDischarge, setShowDischarge] = useState(false);
-    const DischargeFieldName = "Выписка пациентов";
+    const dischargeFieldName = "Выписка пациентов";
 
     const onCloseDischarge = () => {
         setShowDischarge(!ShowDischarge)
@@ -16,7 +24,7 @@ export function HospitalProvider({ children }) {
     const DischargeSwitcher = {
         showModal: ShowDischarge,
         toggleView: onCloseDischarge,
-        modalNameField :DischargeFieldName,
+        modalNameField :dischargeFieldName,
     }
 
     //Transfer Modal
@@ -34,8 +42,7 @@ export function HospitalProvider({ children }) {
     }
 
 
-
-    //Editing Modal Places
+//Editing Modal Places
     const [ShowEditing, setShowEditing] = useState(false);
     const EditingFieldName = "Редактирование мест";
 
@@ -49,8 +56,41 @@ export function HospitalProvider({ children }) {
         modalNameField: EditingFieldName,
     }
 
+    //CardModels
+    const [MensTotal, SetMensTotal] = useState(30);
+    const [MensBooked, SetMensBooked] = useState(25);
+    const [MensFree, SetMensFree] = useState(MensTotal - MensBooked);
 
+    const onChangePlusMens = () => {
+       if (MensBooked === MensTotal) {
+            return;
+       }
+       else {
+           SetMensBooked((prevState) => prevState + 1 )
+           SetMensFree((prevState) => prevState - 1 )
+           }
+    }
 
+    const onChangeMinusMens = () => {
+        if (MensFree === MensTotal) {
+            return;
+        }
+        else {
+            SetMensBooked((prevState) => prevState - 1 )
+            SetMensFree((prevState) => prevState + 1 )
+        }
+    }
+
+    const MensFieldName = "Мужские";
+
+    const MensCard = {
+        FreePlaces: MensFree,
+        BookedPlaces: MensBooked,
+        TotalPlaces: MensTotal,
+        cardFieldName: MensFieldName,
+        plusPlaces: onChangePlusMens,
+        MinusPlaces: onChangeMinusMens,
+    }
 
 
     return (
@@ -59,6 +99,8 @@ export function HospitalProvider({ children }) {
                 DischargeSwitcher,
                 EditingPlacesSwitcher,
                 TransferSwitcher,
+
+                MensCard,
             }}
         >
             {children}
