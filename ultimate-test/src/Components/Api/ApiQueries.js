@@ -1,4 +1,6 @@
+import React from "react"
 import axios from "axios";
+import Header from "../HospitalBeds /Header/Header";
 
 
 // "refresh": "..",
@@ -37,8 +39,7 @@ async function auth() {
         // console.log(getLocal('refresh'))
         // console.log('FirstAccessData is :')
         // console.log(getLocal('access'))
-    }
-    catch (e) {
+    } catch (e) {
         console.error(e);
     }
 }
@@ -58,8 +59,7 @@ async function refreshToken() {
         // console.log(getLocal('refresh'))
         // console.log('NewAccessData is :')
         // console.log(getLocal('access'))
-    }
-    catch (e) {
+    } catch (e) {
         console.error(e);
     }
 }
@@ -69,7 +69,7 @@ async function additionInfo() {
         Authorization: 'Bearer ' + JSON.parse(getLocal('access'))
     }
     try {
-        const response = await instance.get('api/users/addition_info/', { headers: additionInfoHeader });
+        const response = await instance.get('api/users/addition_info/', {headers: additionInfoHeader});
         const responseData = await response;
         // console.log('additionInfoHeader is :')
         // console.log(responseData)
@@ -88,8 +88,7 @@ async function additionInfo() {
         // console.log(JSON.parse(getLocal('departments')).map( d => d))
         // console.log(JSON.parse(getLocal('departments')).map( d => typeof d.name ))
 
-    }
-    catch (e) {
+    } catch (e) {
         console.error(e);
     }
 }
@@ -99,7 +98,7 @@ async function getHospitals() {
         Authorization: 'Bearer ' + JSON.parse(getLocal('access'))
     }
     try {
-        const response = await instance.get('api/hospitals/departments/', { headers: additionInfoHeader });
+        const response = await instance.get('api/hospitals/departments/', {headers: additionInfoHeader});
         const responseData = await response;
         // console.log('Hospitals is :')
         // console.log(responseData)
@@ -130,8 +129,7 @@ async function getHospitals() {
         // console.log(JSON.parse(getLocal('departments')).map( d => d))
         // console.log(JSON.parse(getLocal('departments')).map( d => typeof d.name ))
 
-    }
-    catch (e) {
+    } catch (e) {
         console.error(e);
     }
 }
@@ -143,7 +141,7 @@ async function getHospitalsDetail(department_id) {
     }
     try {
         // const department_id = 20;
-        const response = await instance.get(`api/hospitals/departments/${department_id}/`, { headers: additionInfoHeader });
+        const response = await instance.get(`api/hospitals/departments/${department_id}/`, {headers: additionInfoHeader});
         const responseData = await response;
         console.log('getHospitalsDetail is :')
         console.log(responseData.data)
@@ -157,12 +155,153 @@ async function getHospitalsDetail(department_id) {
         // console.log(JSON.parse(getLocal('departments')).map( d => d))
         // console.log(JSON.parse(getLocal('departments')).map( d => typeof d.name ))
 
-    }
-    catch (e) {
+    } catch (e) {
         console.error(e);
     }
 }
 
+async function setHospitalChanges() {
+    const additionInfoHeader = {
+        Authorization: 'Bearer ' + JSON.parse(getLocal('access'))
+    }
+
+    const dataToChange = JSON.stringify({
+        department_id: 20,
+
+        count_female_busy: 0,
+        count_female_o2_busy: 0,
+        count_female_free: 30,
+        count_female_o2_free: 30,
+
+        count_male_busy: 0,
+        count_male_o2_busy: 0,
+        count_male_free: 30,
+        count_male_o2_free: 30
+    });
+
+    try {
+        // const department_id = 20;
+        const response = await instance.post(`api/hospitals/bunks/multiple_change/`,dataToChange, {
+            headers: additionInfoHeader
+        });
+
+        const responseData = await response;
+        console.log('getHospitalsDetail is :')
+        console.log(responseData.data)
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+async function setHospitalAddition() {
+    const additionInfoHeader = {
+        Authorization: 'Bearer ' + JSON.parse(getLocal('access'))
+    }
+
+    const dataToAddition = JSON.stringify({
+        department_id: 20,
+        busy_count: 5,
+        free_count: 5,
+        sex: 'male',
+        has_oxygen: 'no',
+    });
+
+    try {
+        // const department_id = 20;
+        const response = await instance.post(`api/hospitals/bunks/multiple_addition/`,dataToAddition, {
+            headers: additionInfoHeader
+        });
+
+        const responseData = await response;
+        console.log('setHospitalAddition is :')
+        console.log(responseData.data)
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+// Дичь
+async function setHospitalDeletion() {
+    const additionInfoHeader = {
+        Authorization: 'Bearer ' + JSON.parse(getLocal('access'))
+    }
+
+    const dataToDeletion = JSON.stringify({
+        department_id: 20,
+        busy_count: 5,
+        free_count: 5,
+        sex: 'male',
+        has_oxygen: 'no',
+    });
+
+    try {
+        const response = await instance.post(`api/hospitals/bunks/multiple_deletion/`,dataToDeletion, {
+            headers: additionInfoHeader
+        });
+
+        const responseData = await response;
+        console.log('setHospitalAddition is :')
+        console.log(responseData.data)
+    } catch (e) {
+        console.error(e);
+    }
+}
+// Дичь
+async function setHospitalTransfer() {
+    const additionInfoHeader = {
+        Authorization: 'Bearer ' + JSON.parse(getLocal('access'))
+    }
+
+    const dataToTransfer = JSON.stringify({
+        from_department_id: 3,
+        from_sex: 'FEMALE',
+        from_has_oxygen: 'True',
+
+        to_department_id: 20,
+        to_sex: 'FEMALE',
+        to_has_oxygen: 'True',
+
+        count: 17
+    });
+
+    try {
+        // const department_id = 20;
+        const response = await instance.post(`api/hospitals/bunks/transfer/`,dataToTransfer, {
+            headers: additionInfoHeader
+        });
+
+        const responseData = await response;
+        console.log('getHospitalsDetail is :')
+        console.log(responseData.data)
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+async function setHospitalRelease() {
+    const additionInfoHeader = {
+        Authorization: 'Bearer ' + JSON.parse(getLocal('access'))
+    }
+
+    const dataToRelease = JSON.stringify({
+        department_id: 20,
+        sex: 'FEMALE',
+        has_oxygen: 'True',
+    });
+
+    try {
+        // const department_id = 20;
+        const response = await instance.post(`api/hospitals/bunks/release/`,dataToRelease, {
+            headers: additionInfoHeader
+        });
+
+        const responseData = await response;
+        console.log('setHospitalRelease is :')
+        console.log(responseData.data)
+    } catch (e) {
+        console.error(e);
+    }
+}
 
 const Api = () => {
     console.log('There axios >>')
@@ -172,6 +311,19 @@ const Api = () => {
     additionInfo();
     getHospitals();
     getHospitalsDetail(20);
+
+    // setHospitalChanges();
+
+
+    // эТО ВООБЩЕ ЧЕ ЗА ШЛЯПА?
+    // setHospitalAddition();
+    // setHospitalDeletion();
+
+
+    //А вот это работает нормально!
+    // setHospitalTransfer();
+
+    setHospitalRelease();
 
     window.addEventListener('storage', event => {
         console.log(event)
