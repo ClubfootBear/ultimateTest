@@ -4,13 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {ApiProvider} from './Context/ApiContext'
+import {LoginProvider} from "./Context/LoginContext";
 
 ReactDOM.render(
     <React.StrictMode>
         <div className="bodyDiv">
-            <ApiProvider>
-                <App/>
-            </ApiProvider>
+            <LoginProvider>
+                <ApiProvider>
+                    <App/>
+                </ApiProvider>
+            </LoginProvider>
         </div>
 
     </React.StrictMode>,

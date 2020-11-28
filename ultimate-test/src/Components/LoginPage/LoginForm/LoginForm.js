@@ -4,7 +4,7 @@ import "./LoginForm.css"
 import React from "react";
 
 
-const NormalLoginForm = () => {
+const NormalLoginForm = (props) => {
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
     };
@@ -32,7 +32,7 @@ const NormalLoginForm = () => {
                         },
                     ]}
                 >
-                    <Input className="BtnForm"
+                    <Input onChange={props.onUserName} className="BtnForm"
                            prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Введите логин" />
                 </Form.Item>
                 <Form.Item
@@ -44,14 +44,14 @@ const NormalLoginForm = () => {
                         },
                     ]}
                 >
-                    <Input.Password className="BtnForm"
+                    <Input.Password onChange={props.onPassword} className="BtnForm"
                                     prefix={<LockOutlined className="site-form-item-icon " />}
                                     type="password"
                                     placeholder="Password"
                     />
                 </Form.Item>
                 <Form.Item>
-                    <Button type="primary" htmlType="submit" className="login-form-button BtnForm">
+                    <Button onClick={props.onLogin} type="primary" htmlType="submit" className="login-form-button BtnForm">
                         Войти
                     </Button>
                 </Form.Item>

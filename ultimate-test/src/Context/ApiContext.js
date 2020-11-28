@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import axios from "axios";
-
+import {setLocal, getLocal} from './FormatForApi'
 
 export const ApiContext = createContext();
 export const useApi = () => useContext(ApiContext);
@@ -9,42 +9,34 @@ export const useApi = () => useContext(ApiContext);
 export function ApiProvider({ children }) {
     const wrongData = JSON.stringify({username: 'Testt_ultra_task', password: 'T54321oikb'});
 
-
-    const setLocal = (stringKey, object) => {
-        localStorage.setItem(stringKey, JSON.stringify(object))
-    }
-
-    const getLocal = (stringKey) => {
-        return localStorage.getItem(stringKey)
-    }
-
+    const badToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYwNjUzNDU0NiwianRpIjoiMDIzOTQzNjFhY2JiNGYzODk2ZWU1ZGQ1ZGYxMTgyNDgiLCJ1c2VyX2lkIjo0MH0.F0e4e-20a7mnzp_nJfBHaJldAbGmGHgJwaOcoxSS1hw"
 
     const instance = axios.create({
         withCredentials: true,
         headers: {'Content-Type': 'application/json', Authorization: 'Basic Og=='},
         baseURL: 'https://kbapi-test.oits.su/',
     })
+    //
+    // async function auth() {
+    //     const userData = JSON.stringify({username: 'Test_ultra_task', password: 'T54321oikb'});
+    //
+    //     try {
+    //         const response = await instance.post('api/users/token/', userData);
+    //         const responseData = await response;
+    //         console.log('Auth data is :')
+    //         console.log(responseData)
+    //         setLocal('refresh', responseData.data.refresh);
+    //         setLocal('access', responseData.data.access);
+    //         console.log('FirstRefreshData is :')
+    //         console.log(getLocal('refresh'))
+    //         console.log('FirstAccessData is :')
+    //         console.log(getLocal('access'))
+    //     } catch (e) {
+    //         console.error(e);
+    //     }
+    // }
 
-    async function auth() {
-        const userData = JSON.stringify({username: 'Test_ultra_task', password: 'T54321oikb'});
-
-        try {
-            const response = await instance.post('api/users/token/', userData);
-            const responseData = await response;
-            console.log('Auth data is :')
-            console.log(responseData)
-            setLocal('refresh', responseData.data.refresh);
-            setLocal('access', responseData.data.access);
-            console.log('FirstRefreshData is :')
-            console.log(getLocal('refresh'))
-            console.log('FirstAccessData is :')
-            console.log(getLocal('access'))
-        } catch (e) {
-            console.error(e);
-        }
-    }
-
-    async function refreshToken() {
+    async function getRefreshToken() {
         const refresh = JSON.stringify({
             refresh: JSON.parse(getLocal('refresh'))
         })
@@ -310,8 +302,8 @@ export function ApiProvider({ children }) {
     return (
         <ApiContext.Provider
             value={{
-                auth,
-                refreshToken,
+                // auth,
+                getRefreshToken,
                 additionInfo,
                 getHospitals,
                 getHospitalsDetail,
