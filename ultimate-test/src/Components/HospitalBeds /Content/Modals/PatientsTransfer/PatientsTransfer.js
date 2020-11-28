@@ -4,11 +4,11 @@ import {CloseOutlined} from "@ant-design/icons";
 import {Button} from "antd";
 import RadioGroup from "../CommonModals/RadioGroup/RadioGroup";
 import DropDownModal from "../CommonModals/DropDownModal/DropDownModal";
-import {useHospital} from "../../../../../Context/HospitalContext";
+import {useModal} from "../../../../../Context/ModalContext";
 import ModalCard from "../CommonModals/ModalCard/ModalCard";
 
 const PatientsTransfer = () => {
-    const {TransferSwitcher} = useHospital();
+    const {TransferSwitcher} = useModal();
 
 
     const PlacesType1 = ['Мужчина', 'Женщина', 'Мужчина с кислородом', 'Женщина с кислородом']

@@ -6,21 +6,22 @@ import CardBlock from "./CardBlock/CardBlock";
 import EditingPlaces from "./Modals/EditingPlaces/EditingPlaces";
 import PatientsTransfer from "./Modals/PatientsTransfer/PatientsTransfer";
 import PatientsDischarge from "./Modals/PatientsDischarge/PatientsDischarge";
-import {useHospital} from "../../../Context/HospitalContext";
+import {useModal} from "../../../Context/ModalContext";
 
 
 const Content = () => {
-    const {DischargeSwitcher, EditingPlacesSwitcher, TransferSwitcher} = useHospital();
+    const {DischargeSwitcher, EditingPlacesSwitcher, TransferSwitcher} = useModal();
 
-    return(
-        <div className="OuterWrapper" >
+    return (
+        <div className="OuterWrapper">
             <div className="ContentWrapper">
-                <StatusBlock />
-                <ButtonBlock />
-                <CardBlock />
-                {EditingPlacesSwitcher.showModal && <EditingPlaces /> }
-                {TransferSwitcher.showModal && <PatientsTransfer/>}
-                {DischargeSwitcher.showModal && <PatientsDischarge />}
+                <StatusBlock/>
+                    <ButtonBlock/>
+                    {EditingPlacesSwitcher.showModal && <EditingPlaces/>}
+                    {TransferSwitcher.showModal && <PatientsTransfer/>}
+                    {DischargeSwitcher.showModal && <PatientsDischarge/>}
+                <CardBlock/>
+
             </div>
         </div>
     )

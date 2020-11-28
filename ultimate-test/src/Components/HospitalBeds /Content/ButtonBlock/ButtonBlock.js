@@ -2,12 +2,12 @@ import React from "react";
 import { Button } from 'antd';
 import { InfoCircleOutlined} from '@ant-design/icons';
 import "./ButtonBlock.css"
-import {useHospital} from "../../../../Context/HospitalContext";
-
+import {useModal} from "../../../../Context/ModalContext";
 
 const ButtonBlock = (props) => {
 
-    const {DischargeSwitcher, EditingPlacesSwitcher, TransferSwitcher} = useHospital();
+    const {DischargeSwitcher, EditingPlacesSwitcher, TransferSwitcher} = useModal();
+
 
     return(
         <div className="ButtonWrapperBlock">

@@ -3,18 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { HospitalProvider } from "./Context/HospitalContext";
+import {ApiProvider} from './Context/ApiContext'
 
 ReactDOM.render(
-  <React.StrictMode>
-      <div className="bodyDiv">
-          <HospitalProvider>
-              <App/>
-          </HospitalProvider>
-      </div>
+    <React.StrictMode>
+        <div className="bodyDiv">
+            <ApiProvider>
+                <App/>
+            </ApiProvider>
+        </div>
 
-  </React.StrictMode>,
-  document.getElementById('root')
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

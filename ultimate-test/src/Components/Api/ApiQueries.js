@@ -1,11 +1,5 @@
 import React from "react"
 import axios from "axios";
-import Header from "../HospitalBeds /Header/Header";
-
-
-// "refresh": "..",
-// "access": ".."
-
 
 const wrongData = JSON.stringify({username: 'Testt_ultra_task', password: 'T54321oikb'});
 
@@ -314,7 +308,6 @@ const Api = () => {
 
     // setHospitalChanges();
 
-
     // эТО ВООБЩЕ ЧЕ ЗА ШЛЯПА?
     // setHospitalAddition();
     // setHospitalDeletion();
@@ -335,23 +328,4 @@ const Api = () => {
 }
 
 export default Api;
-
-// const options = {
-//     method: 'POST',
-//     url: 'https://kbapi-test.oits.su/api/hospitals/bunks/multiple_change/',
-//     headers: {
-//         Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjA2NDAzOTQ1LCJqdGkiOiI2MGUxMWJlOTg0YmM0Zjg2Yjc0ZjQyN2I1ODM0NWVmYyIsInVzZXJfaWQiOjQwfQ.9IoAgbpKQEzpfXnNGK7-KTUg-_iL-q2b8Tmog2roNyE'
-//     },
-//     data: {
-//         department_id: 20,
-//         count_female_busy: 15,
-//         count_female_o2_busy: 15,
-//         count_female_free: 15,
-//         count_female_o2_free: 15,
-//         count_male_busy: 15,
-//         count_male_o2_busy: 15,
-//         count_male_free: 15,
-//         count_male_o2_free: 15
-//     }
-// };
 
