@@ -130,11 +130,13 @@
 .Progress {
     display: flex;
     flex-direction: row;
-
     /*text-align: center;*/
     justify-content: space-between;
-
     margin-top: 4px;
+}
+
+.Hidden {
+    visibility: hidden;
 }
 
 .Progress p {

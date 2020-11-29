@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import axios from "axios";
-import {setLocal, getLocal} from './FormatForApi'
+import {setLocal, getLocal, instance} from './FormatForApi'
 
 
 export const loginContext = createContext();
@@ -8,12 +8,6 @@ export const useLogin = () => useContext(loginContext);
 
 
 export function LoginProvider({ children }) {
-
-    const instance = axios.create({
-        withCredentials: true,
-        headers: {'Content-Type': 'application/json', Authorization: 'Basic Og=='},
-        baseURL: 'https://kbapi-test.oits.su/',
-    })
 
     const [isAuth, setIsAuth] = useState(false);
 
@@ -24,21 +18,20 @@ export function LoginProvider({ children }) {
         try {
             const response = await instance.post('api/users/token/', userData);
             const responseData = await response;
-            console.log('Auth data is :')
-            console.log(responseData)
-
-            console.log('Auth CODE is :')
-            console.log(responseData.status)
+            // console.log('Login is Talking:')
+            // console.log(responseData)
+            // console.log('Auth CODE is :')
+            // console.log(responseData.status)
             if(responseData.status === 200){
                 setLocal('refresh', responseData.data.refresh);
                 setLocal('access', responseData.data.access);
                 setIsAuth(true)
             }
 
-            console.log('FirstRefreshData is :')
-            console.log(getLocal('refresh'))
-            console.log('FirstAccessData is :')
-            console.log(getLocal('access'))
+            // console.log('FirstRefreshData is :')
+            // console.log(getLocal('refresh'))
+            // console.log('FirstAccessData is :')
+            // console.log(getLocal('access'))
         } catch (e) {
             console.error(e);
         }

@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import "./Content.css"
 import StatusBlock from "./StatusBlock/StatusBlock";
 import ButtonBlock from "./ButtonBlock/ButtonBlock";

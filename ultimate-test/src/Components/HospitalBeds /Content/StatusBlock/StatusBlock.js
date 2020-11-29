@@ -1,13 +1,32 @@
 import React from "react";
 import "./StatusBlock.css"
-import {Dropdown} from "antd";
+import {Dropdown, Menu} from "antd";
 import {AimOutlined, DownOutlined} from "@ant-design/icons";
-import {menu} from "./DepartmentsDropDown/DepartmentsDropDown";
+import {useHospital} from "../../../../Context/HospitalContext";
+
 
 const StatusBlock = () => {
 
+    const {departmentsGroup, hospitalGroup} = useHospital();
+    const selectedDepartment = departmentsGroup.selectedDepartment;
+    const totalFree = departmentsGroup.totalFree;
+    const totalBusy = departmentsGroup.totalBusy;
+    const totalAbsolut = departmentsGroup.totalAbsolut;
 
 
+    const menu = (
+        <Menu>
+            {departmentsGroup.departments.map((d, index) =>
+                !(selectedDepartment === d.name) &&
+                <Menu.Item key={d.name} onClick={() => departmentsGroup.selectDepartment(d.name, d.id)}
+                           className="DepartmentDropDown">
+                    {d.name}
+                </Menu.Item>
+            )}
+        </Menu>
+    );
+
+    // additionInfo();
 
     return (
         <div className="StatusBlock">
@@ -16,7 +35,7 @@ const StatusBlock = () => {
                     <div className="DepartmentDropDown">
                         <Dropdown overlay={menu}>
                             <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-                                Стационарное Отделение <DownOutlined/>
+                                {selectedDepartment + " "}<DownOutlined/>
                             </a>
                         </Dropdown>
                     </div>
@@ -24,13 +43,13 @@ const StatusBlock = () => {
                         <p>Места в стационаре</p>
                     </div>
                     <div className="TotalStatusTags">
-                        <div className="Free">Свободно <span>60</span></div>
-                        <div className="Busy">Занято <span>60</span></div>
-                        <div className="Total">Всего <span>120</span></div>
+                        <div className="Free">Свободно <span>{totalFree}</span></div>
+                        <div className="Busy">Занято <span>{totalBusy}</span></div>
+                        <div className="Total">Всего <span>{totalAbsolut}</span></div>
                     </div>
                 </div>
                 <div className="HospitalPosition">
-                    <div><AimOutlined style={{marginRight: '9px'}}/>ГБУЗ ТО «Госпиталь для ветеранов войн» - Котовского, 55/2</div>
+                    <div><AimOutlined style={{marginRight: '9px'}}/>{hospitalGroup.selectedHospital}</div>
                 </div>
             </div>
         </div>
