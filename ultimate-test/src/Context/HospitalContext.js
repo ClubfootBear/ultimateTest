@@ -1,4 +1,4 @@
-import React, {createContext, useState, useEffect, useContext} from 'react';
+import React, {createContext, useState, useEffect, useContext, useReducer} from 'react';
 import {getLocal, setLocal, instance} from "./FormatForApi";
 
 export const HospitalContext = createContext();
@@ -6,6 +6,7 @@ export const useHospital = () => useContext(HospitalContext);
 
 
 export function HospitalProvider({children}) {
+
     let dep = JSON.parse(getLocal('department'));
     const [department, setDepartment] = useState(dep)
 
@@ -44,16 +45,11 @@ export function HospitalProvider({children}) {
             // const response = await instance.get('api/hospitals/departments/', {headers: additionInfoHeader});
             const response = await instance.get(`api/hospitals/departments/${departmentId}/`, {headers: additionInfoHeader});
             const responseData = await response;
-
-            // console.log(`getDepartment is  Talking: ${departmentId} `)
-            // const departmentIncome = responseData.data.filter(h => h.id === departmentId)[0]
-            // console.log('responseData.status ' + responseData.status)
-
             if (responseData.status === 200) {
                 const departmentIncome = responseData.data;
                 setLocal('department', departmentIncome);
                 dep = JSON.parse(getLocal('department'));
-                // console.log(dep)
+                console.log(dep)
                 setDepartment(dep)
             }
         } catch (e) {
@@ -100,7 +96,7 @@ export function HospitalProvider({children}) {
             count_female_o2_free: departmentObj.count_female_o2_free,
 
             // count_male_busy: departmentObj.count_male_busy,
-            count_male_busy: 18,
+            count_male_busy: departmentObj.count_male_busy,
             count_male_o2_busy: departmentObj.count_male_o2_busy,
             count_male_free: departmentObj.count_male_free,
             count_male_o2_free: departmentObj.count_male_o2_free
@@ -109,6 +105,7 @@ export function HospitalProvider({children}) {
             const response = await instance.post(`api/hospitals/bunks/multiple_change/`,dataToChange, {
                 headers: additionInfoHeader
             });
+            // getDepartment(departmentObj.department_id);
             const responseData = await response;
             //
             // console.log('show is :')
@@ -138,11 +135,6 @@ export function HospitalProvider({children}) {
     const count_female_busy = department.count_female_busy;
     const count_female_o2_busy = department.count_female_o2_busy;
 
-
-
-    const getAllData = () => {
-
-    }
 
     let departmentObj = [{
         department_id: department.id,
@@ -214,6 +206,8 @@ export function HospitalProvider({children}) {
         objReducerFree(obj)
         const clearObj = objReducerBusy(obj)
         setHospitalChanges(clearObj);
+        // handleClick(check);
+        // getDepartment(clearObj.department_id);
     }
 
     const totalFree = count_male_free + count_male_o2_free + count_female_free + count_female_o2_free;
@@ -278,7 +272,7 @@ export function HospitalProvider({children}) {
         expandFreePlaces,
         expandBookedPlaces,
         expandTotalPlaces,
-        fieldNames: fieldNames,
+        fieldNames,
         setHospitalAddition,
         expandSex,
         expandOxygen,
@@ -295,6 +289,7 @@ export function HospitalProvider({children}) {
         totalBusy,
         totalAbsolut,
         setDepartment,
+        getDepartment,
     }
 
     const hospitalGroup = {

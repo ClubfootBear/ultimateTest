@@ -7,6 +7,8 @@ import {Button} from "antd";
 
 const ModalCard = ({children, value}) => {
 
+
+
     return(
         <div className="ModalWrap">
             <form className="ModalForm" action="#">
@@ -16,11 +18,11 @@ const ModalCard = ({children, value}) => {
                 </div>
                 <div className='LineTop'/>
                 {children}
-                <div className='LineBottom'/>
-                <div className="ModalButton">
-                    <Button onClick={value.toggleView} className="IBStyle Decline">Отмена</Button>
-                    <Button className="IBStyle Save" type="primary">Сохранить</Button>
-                </div>
+                {/*<div className='LineBottom'/>*/}
+                {/*<div className="ModalButton">*/}
+                {/*    <Button onClick={value.toggleView} className="IBStyle Decline">Отмена</Button>*/}
+                {/*    <Button onClick={value.onSend} className="IBStyle Save" type="primary">Сохранить</Button>*/}
+                {/*</div>*/}
             </form>
         </div>
     )

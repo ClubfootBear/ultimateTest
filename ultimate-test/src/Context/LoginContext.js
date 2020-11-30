@@ -9,7 +9,7 @@ export const useLogin = () => useContext(loginContext);
 
 export function LoginProvider({ children }) {
 
-    const [isAuth, setIsAuth] = useState(false);
+    const [isAuth, setIsAuth] = useState(getLocal('auth'));
 
     async function auth(userName, password) {
         // const userData = JSON.stringify({username: 'Test_ultra_task', password: 'T54321oikb'});
@@ -18,22 +18,16 @@ export function LoginProvider({ children }) {
         try {
             const response = await instance.post('api/users/token/', userData);
             const responseData = await response;
-            // console.log('Login is Talking:')
-            // console.log(responseData)
-            // console.log('Auth CODE is :')
-            // console.log(responseData.status)
             if(responseData.status === 200){
                 setLocal('refresh', responseData.data.refresh);
                 setLocal('access', responseData.data.access);
                 setIsAuth(true)
+                // debugger
+                setLocal('auth', true);
             }
-
-            // console.log('FirstRefreshData is :')
-            // console.log(getLocal('refresh'))
-            // console.log('FirstAccessData is :')
-            // console.log(getLocal('access'))
         } catch (e) {
             console.error(e);
+            setLocal('auth', false);
         }
     }
 
@@ -54,6 +48,8 @@ export function LoginProvider({ children }) {
 
     const onLogout = () => {
         setIsAuth(false)
+        setLocal('auth', false);
+        console.log(getLocal('auth'))
     }
 
     return (
@@ -62,7 +58,8 @@ export function LoginProvider({ children }) {
                 onUserName,
                 onPassword,
                 onLogin,
-                isAuth,
+                isAuthLocal: getLocal('auth'),
+                isAuth: isAuth,
                 onLogout,
             }}
         >
