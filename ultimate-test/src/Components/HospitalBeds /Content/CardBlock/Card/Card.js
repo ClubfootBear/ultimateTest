@@ -13,74 +13,30 @@ const Card = (props) => {
     const isTransfer = TransferSwitcher.showModal;
     const isDischarge = DischargeSwitcher.showModal;
 
-    const {departmentsGroup, hospitalGroup} = useHospital();
-    const departmentId = departmentsGroup.department.id;
-    const sex = props.Sex;
-    const has_oxygen = props.Oxygen;
+    const cardFieldName = props.cardFieldName;
+    const depId = props.departmentId;
 
-    const setHospitalAddition = hospitalGroup.setHospitalAddition;
-    const onCollectAll = hospitalGroup.onCollectAll;
+    const total = props.totalPlaces;
+    const free = props.freePlaces;
+    const booked = props.bookedPlaces;
 
-    const [free, setFree] = useState(props.FreePlaces);
-    const [booked, setBooked] = useState(props.BookedPlaces);
-    const [total, setTotal] = useState(booked + free);
+    const sex = props.sex;
+    const oxygen = props.oxygen;
 
-    const typeFree = props.TypeFree;
-    const typeBusy = props.TypeBooked;
-
-    useEffect(() => {
-        setFree(props.FreePlaces)
-        setBooked(props.BookedPlaces)
-        setTotal(props.FreePlaces + props.BookedPlaces)
-    }, [props.FreePlaces])
+    const onChangeMinus = props.onChangeMinus;
+    const onChangePlus = props.onChangePlus;
 
 
-    const toSend = (sign) => {
-        let freeSend = free;
-        let bookedSend = booked;
+    const placeObject = {
+        depId,
 
-        if (sign === 'plus') {
-            freeSend = free - 1;
-            bookedSend = booked + 1
-        } else {
-            freeSend = free + 1;
-            bookedSend = booked - 1
-        }
-
-        const cardData = {
-            freeData: {typeFree, freeSend},
-            busyData: {typeBusy, bookedSend},
-            departmentId: departmentId,
-        }
-
-        return cardData;
+        total,
+        free,
+        booked,
+        sex,
+        oxygen,
     }
 
-    // const cardData = {
-    //     freeData: {typeFree, free},
-    //     busyData: {typeBusy, booked},
-    // }
-
-    const onChangePlus = () => {
-        if (booked === total) {
-            return;
-        } else {
-            setBooked((prevState) => prevState + 1)
-            setFree((prevState) => prevState - 1)
-            setHospitalAddition(departmentId, booked, free, sex, has_oxygen)
-            onCollectAll(toSend('plus'));
-        }
-    }
-
-    const onChangeMinus = () => {
-        if (free === total) {
-            return;
-        } else {
-            setBooked((prevState) => prevState - 1)
-            setFree((prevState) => prevState + 1)
-            onCollectAll(toSend('minus'));
-        }
-    }
 
     const calcPercent = Math.round((booked / total) * 100);
 
@@ -88,10 +44,11 @@ const Card = (props) => {
         <div id="WrapperCard">
             <div className="Card">
                 <div>
-                    <h3>{props.cardFieldName}</h3>
+                    <h3>{cardFieldName}</h3>
                 </div>
                 <div className="ActionButtonCard">
-                    <MinusCircleFilled onClick={onChangeMinus} style={{fontSize: '32px', color: '#0088cc'}}
+                    <MinusCircleFilled onClick={() => onChangeMinus(placeObject)}
+                                       style={{fontSize: '32px', color: '#0088cc'}}
                                        theme="outlined"/>
                     <div className="StatusButtonCard">
                         <div className="StatusBusy">
@@ -101,13 +58,16 @@ const Card = (props) => {
                             <p>{booked}</p>
                         </div>
                     </div>
-                    <PlusCircleFilled onClick={onChangePlus} style={{fontSize: '32px', color: '#08c'}}
+                    <PlusCircleFilled onClick={() => onChangePlus(placeObject)}
+                                      style={{fontSize: '32px', color: '#08c'}}
                                       theme="outlined"/>
                 </div>
-                <div className={!isEdit & !isTransfer & !isDischarge ? "Progress" : "Hidden"}>
-                    <Progress percent={calcPercent} showInfo={false} style={{paddingRight: '25px'}}/>
-                    <p>{calcPercent}%</p>
-                </div>
+                {/*<div className={!isEdit & !isTransfer & !isDischarge ? "Progress" : "Hidden"}>*/}
+                    <div>
+                        <Progress percent={calcPercent} showInfo={false} style={{paddingRight: '25px'}}/>
+                        <p>{calcPercent}%</p>
+                    </div>
+                {/*</div>*/}
                 <div className="TotalStatus">
                     <div>Свободно <span>{free}</span></div>
                     <div>Всего <span>{total}</span></div>
@@ -119,3 +79,81 @@ const Card = (props) => {
 
 
 export default Card;
+
+// const {departmentsGroup, hospitalGroup, card} = useHospital();
+
+// const onChangePlus = card.onChangePlus;
+// const onChangeMinus = card.onChangeMinus;
+
+// const addPlaces = card.addPlaces;
+// const removePlaces = card.removePlaces;
+
+// const departmentId = departmentsGroup.department.id;
+// const sex = props.Sex;
+// const has_oxygen = props.Oxygen;
+
+// const setHospitalAddition = hospitalGroup.setHospitalAddition;
+// const onCollectAll = hospitalGroup.onCollectAll;
+
+// const [free, setFree] = useState(props.FreePlaces);
+// const [booked, setBooked] = useState(props.BookedPlaces);
+
+// const [free, setFree] = useState(30);
+// const [booked, setBooked] = useState(10);
+// const [total, setTotal] = useState(booked + free);
+
+// const typeFree = props.TypeFree;
+// const typeBusy = props.TypeBooked;
+
+// useEffect(() => {
+//     setFree(props.FreePlaces)
+//     setBooked(props.BookedPlaces)
+//     setTotal(props.FreePlaces + props.BookedPlaces)
+// }, [props.FreePlaces])
+
+
+// const toSend = (sign) => {
+//     let freeSend = free;
+//     let bookedSend = booked;
+//
+//     if (sign === 'plus') {
+//         freeSend = free - 1;
+//         bookedSend = booked + 1
+//     } else {
+//         freeSend = free + 1;
+//         bookedSend = booked - 1
+//     }
+//
+//     const cardData = {
+//         freeData: {typeFree, freeSend},
+//         busyData: {typeBusy, bookedSend},
+//         departmentId: departmentId,
+//     }
+//
+//     return cardData;
+// }
+
+// const onChangePlus = (booked, total, departmentId) => {
+//     console.log('Click')
+//     if (booked === total) {
+//         return;
+//     } else {
+//         // setBooked((prevState) => prevState + 1)
+//         // setFree((prevState) => prevState - 1)
+//         // setHospitalAddition(departmentId, booked, free, sex, has_oxygen)
+//         // onCollectAll(toSend('plus'));
+//         // addPlaces(departmentId)
+//     }
+// }
+
+// const onChangeMinus = (free, total, departmentId) => {
+//     console.log('Click')
+//     if (free === total) {
+//         return;
+//     } else {
+//         // setBooked((prevState) => prevState - 1)
+//         // setFree((prevState) => prevState + 1)
+//         // onCollectAll(toSend('minus'));
+//         // removePlaces(departmentId)
+//     }
+// }

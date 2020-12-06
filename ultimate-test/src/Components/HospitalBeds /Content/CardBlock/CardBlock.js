@@ -4,42 +4,55 @@ import Card from "./Card/Card";
 import {useHospital} from "../../../../Context/HospitalContext";
 import {loginContext} from "../../../../Context/LoginContext";
 import {getLocal} from "../../../../Context/FormatForApi";
+import {useExpand} from "../../../../Context/Expand";
 
 
 const CardBlock = () => {
-    const {setHospitalAddition, departmentsGroup} = useHospital();
+    const {setHospitalAddition, departmentsGroup, card} = useHospital();
+    const {expand} = useExpand();
 
+
+    ///BigQuestion!!!
     const departmentId = departmentsGroup.department.id;
-    const {card} = useHospital();
+
+    const onChangePlus = card.onChangePlus;
+    const onChangeMinus = card.onChangeMinus;
 
     // debugger
-    const fieldNames = card.fieldNames;
+    const fieldNames = expand.fieldNames;
 
-    const expandFreePlaces = card.expandFreePlaces;
-    const expandBookedPlaces = card.expandBookedPlaces;
-    const expandTotalPlaces = card.expandTotalPlaces;
-    const expandSex = card.expandSex;
-    const expandOxygen = card.expandOxygen;
-    const expandTypeFree = card.expandTypeFree;
-    const expandTypeBooked = card.expandTypeBooked;
+    const expandFreePlaces = expand.freePlaces;
+    const expandBookedPlaces = expand.bookedPlaces;
+    const expandTotalPlaces = expand.totalPlaces;
+
+    const expandSex = expand.sex;
+    const expandOxygen = expand.oxygen;
+    const expandTypeFree = expand.typeFree;
+    const expandTypeBooked = expand.typeBooked;
 
     return (
         <div className="WrapperCardBlock">
-            <div className="CardBlock">
-                <div>
+                <div className='CardBlock'>
                     {fieldNames.map(f =>
                         <Card key={f}
                               cardFieldName={f}
-                              FreePlaces={expandFreePlaces(f)}
-                              BookedPlaces={expandBookedPlaces(f)}
-                              TotalPlaces={expandTotalPlaces(f)}
-                              Sex={expandSex(f)}
-                              Oxygen={expandOxygen(f)}
-                              TypeFree={expandTypeFree(f)}
-                              TypeBooked={expandTypeBooked(f)}
+
+                              freePlaces={expandFreePlaces(f)}
+                              bookedPlaces={expandBookedPlaces(f)}
+                              totalPlaces={expandTotalPlaces(f)}
+
+                              sex={expandSex(f)}
+                              oxygen={expandOxygen(f)}
+
+                              typeFree={expandTypeFree(f)}
+                              typeBooked={expandTypeBooked(f)}
+
+                              onChangePlus={onChangePlus}
+                              onChangeMinus={onChangeMinus}
+                              departmentId={departmentId}
+
                         />
                     )}
-                </div>
             </div>
         </div>
     )

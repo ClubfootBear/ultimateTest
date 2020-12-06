@@ -27,7 +27,7 @@ export function ModalProvider({children}) {
                 setLocal('department', departmentIncome);
 
                 const dep = getLocal('department')
-                debugger
+                // debugger
                 // setDepartment(dep);
                 console.log('iNNER gET')
                 setShowEditing(true)
