@@ -3,30 +3,35 @@ import "./StatusBlock.css"
 import {Dropdown, Menu} from "antd";
 import {AimOutlined, DownOutlined} from "@ant-design/icons";
 import {useHospital} from "../../../../Context/HospitalContext";
+import {useExpand} from "../../../../Context/Expand";
 
 
 const StatusBlock = () => {
 
-    const {departmentsGroup, hospitalGroup} = useHospital();
-    const selectedDepartment = departmentsGroup.selectedDepartment;
-    const totalFree = departmentsGroup.totalFree;
-    const totalBusy = departmentsGroup.totalBusy;
-    const totalAbsolut = departmentsGroup.totalAbsolut;
+    const {departmentsGroup} = useHospital();
+    const departments = departmentsGroup.departments;
+    const hospitalName = departmentsGroup.department.hospital_name;
+    const departmentName = departmentsGroup.department.name;
+
+    const selectDepartment = departmentsGroup.selectDepartment;
+
+    const {summoryDepartment} = useExpand();
+    const totalFree = summoryDepartment.totalFree;
+    const totalBusy = summoryDepartment.totalBusy;
+    const totalAbsolut = summoryDepartment.totalAbsolut;
 
 
     const menu = (
         <Menu>
-            {departmentsGroup.departments.map((d, index) =>
-                !(selectedDepartment === d.name) &&
-                <Menu.Item key={d.name} onClick={() => departmentsGroup.selectDepartment(d.name, d.id)}
+            {departments.map((d, index) =>
+                !(departmentName === d.name) &&
+                <Menu.Item key={d.name} onClick={() => selectDepartment(d.id)}
                            className="DepartmentDropDown">
                     {d.name}
                 </Menu.Item>
             )}
         </Menu>
     );
-
-    // additionInfo();
 
     return (
         <div className="StatusBlock">
@@ -35,7 +40,7 @@ const StatusBlock = () => {
                     <div className="DepartmentDropDown">
                         <Dropdown overlay={menu}>
                             <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-                                {selectedDepartment + " "}<DownOutlined/>
+                                {departmentName + " "}<DownOutlined/>
                             </a>
                         </Dropdown>
                     </div>
@@ -49,7 +54,7 @@ const StatusBlock = () => {
                     </div>
                 </div>
                 <div className="HospitalPosition">
-                    <div><AimOutlined style={{marginRight: '9px'}}/>{hospitalGroup.selectedHospital}</div>
+                    <div><AimOutlined style={{marginRight: '9px'}}/>{hospitalName}</div>
                 </div>
             </div>
         </div>

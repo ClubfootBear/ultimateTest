@@ -17,7 +17,7 @@ const ButtonBlock = (props) => {
             <div className="ButtonBlock">
                 {/*<div className="Plug"></div>*/}
                 <div className="ButtonInnerWrapper">
-                    <Button onClick={EditingPlacesSwitcher.onClickModal} className="ActionButton Btn560" type="primary">Изменить число мест</Button>
+                    <Button onClick={EditingPlacesSwitcher.toggleView} className="ActionButton Btn560" type="primary">Изменить число мест</Button>
                     <Button onClick={TransferSwitcher.toggleView} className="ActionButton Btn560">Перевести пациентов</Button>
                     <Button onClick={DischargeSwitcher.toggleView}  className="ActionButton Btn560">Выписать пациентов</Button>
                     <Button className="ActionButton Btn560">

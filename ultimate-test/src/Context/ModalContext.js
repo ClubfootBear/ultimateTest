@@ -10,9 +10,9 @@ export const useModal = () => useContext(ModalContext);
 
 export function ModalProvider({children}) {
 
-    const {departmentsGroup, hospitalGroup} = useHospital();
-    const departmentId = departmentsGroup.department.id;
-    const setDepartment = departmentsGroup.setDepartment;
+    // const {departmentsGroup, hospitalGroup} = useHospital();
+    // const departmentId = departmentsGroup.department.id;
+    // const setDepartment = departmentsGroup.setDepartment;
 
     async function getDepartmentModal(departmentId) {
         const additionInfoHeader = {
@@ -44,7 +44,6 @@ export function ModalProvider({children}) {
 
     const onCloseDischarge = () => {
         setShowDischarge(!ShowDischarge)
-        console.log('Clicked onCloseDischarge')
     }
 
     const DischargeSwitcher = {
@@ -77,8 +76,8 @@ export function ModalProvider({children}) {
     }
 
     const onClickEditing = () => {
-        getDepartmentModal(departmentId)
-        console.log('AFTER GET')
+        // getDepartmentModal(departmentId)
+        // console.log('AFTER GET')
     }
 
     const onSendEditing  = () => {
@@ -89,8 +88,8 @@ export function ModalProvider({children}) {
         showModal: ShowEditing,
         toggleView: onCloseEditing,
         modalNameField: EditingFieldName,
-        onSend: onSendEditing,
-        onClickModal: onClickEditing,
+        // onSend: onSendEditing,
+        // onClickModal: onClickEditing,
     }
 
 

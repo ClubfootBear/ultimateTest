@@ -44,8 +44,8 @@ const CardBlock = () => {
                               sex={expandSex(f)}
                               oxygen={expandOxygen(f)}
 
-                              typeFree={expandTypeFree(f)}
-                              typeBooked={expandTypeBooked(f)}
+                              // typeFree={expandTypeFree(f)}
+                              // typeBooked={expandTypeBooked(f)}
 
                               onChangePlus={onChangePlus}
                               onChangeMinus={onChangeMinus}

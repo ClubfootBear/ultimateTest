@@ -4,16 +4,16 @@ import {getLocal, setLocal, instance} from "./FormatForApi";
 import testValue from "../Reducer/testValue";
 import {loginContext} from "./LoginContext";
 import hospitalReducer, {initialState} from "../Reducer/HospitalReducer";
+import {useHospital} from "./HospitalContext";
 
 
 export const ExpandContext = createContext();
 export const useExpand = () => useContext(ExpandContext);
 
 export function ExpandProvider({children}) {
-    const [state, dispatch] = useReducer(hospitalReducer, initialState);
 
-    const departments = state.testValue;
-    const [department, setDepartment] = useState(departments[0])
+    const {departmentsGroup} = useHospital()
+    const department = departmentsGroup.department;
 
     const fieldNames = ["Мужские", "Мужские с кислородом", "Женские", "Женские с кислородом"];
 

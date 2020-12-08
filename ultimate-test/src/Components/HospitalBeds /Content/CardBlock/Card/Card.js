@@ -62,12 +62,12 @@ const Card = (props) => {
                                       style={{fontSize: '32px', color: '#08c'}}
                                       theme="outlined"/>
                 </div>
-                {/*<div className={!isEdit & !isTransfer & !isDischarge ? "Progress" : "Hidden"}>*/}
-                    <div>
+                <div>
+                    <div className={!isEdit & !isTransfer & !isDischarge ? "Progress" : "Hidden"}>
                         <Progress percent={calcPercent} showInfo={false} style={{paddingRight: '25px'}}/>
                         <p>{calcPercent}%</p>
                     </div>
-                {/*</div>*/}
+                </div>
                 <div className="TotalStatus">
                     <div>Свободно <span>{free}</span></div>
                     <div>Всего <span>{total}</span></div>

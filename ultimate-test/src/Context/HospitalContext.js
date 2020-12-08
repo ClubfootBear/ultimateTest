@@ -9,19 +9,25 @@ export const HospitalContext = createContext();
 export const useHospital = () => useContext(HospitalContext);
 
 
+// debugger
+
 export function HospitalProvider({children}) {
     const [state, dispatch] = useReducer(hospitalReducer, initialState);
 
-    const departments = state.testValue;
+    const departments = state.hospitalData;
     const [department, setDepartment] = useState(departments[0])
 
-    const [selectedHospital, setSelectedHospital] = useState(department.hospital_name)
-    const [selectedDepartment, setSelectedDepartment] = useState(departments[0].name)
-
+    const selectDepartment = (departmentId) => {
+        const departmentIndex = departments.findIndex((d)=> d.id === departmentId)
+        setDepartment(departments[departmentIndex])
+        // setSelectedDepartment(name)
+        // getDepartment(departmentId);
+    }
 
     //ActionFunction
     const removePlaces = (obj) => dispatch({ type: 'MINUS', object: obj });
     const addPlaces = (obj) => dispatch({ type: 'PLUS', object: obj });
+    const setPlaces = (obj) => dispatch({ type: 'SET', object: obj });
 
     //
     const onChangeMinus = (obj) => {
@@ -29,11 +35,9 @@ export function HospitalProvider({children}) {
         if (obj.free === obj.total) {
             return;
         } else {
+            obj.free = obj.free + 1;
+            obj.booked = obj.booked - 1;
             removePlaces(obj)
-            // setBooked((prevState) => prevState - 1)
-            // setFree((prevState) => prevState + 1)
-            // onCollectAll(toSend('minus'));
-
         }
     }
 
@@ -43,11 +47,9 @@ export function HospitalProvider({children}) {
         if (obj.booked === obj.total) {
             return;
         } else {
+            obj.free = obj.free - 1;
+            obj.booked = obj.booked + 1;
             addPlaces(obj)
-            // setBooked((prevState) => prevState + 1)
-            // setFree((prevState) => prevState - 1)
-            // setHospitalAddition(departmentId, booked, free, sex, has_oxygen)
-            // onCollectAll(toSend('plus'));
         }
     }
 
@@ -166,10 +168,7 @@ export function HospitalProvider({children}) {
     // }
 
 
-    // const selectDepartment = (name, departmentId) => {
-    //     setSelectedDepartment(name)
-    //     getDepartment(departmentId);
-    // }
+
 
     // const fieldNames = ["Мужские", "Мужские с кислородом", "Женские", "Женские с кислородом"];
     //
@@ -331,17 +330,17 @@ export function HospitalProvider({children}) {
     const departmentsGroup = {
         departments,
         department,
-        selectedDepartment,
-        // selectDepartment,
+        // selectedDepartment,
+        selectDepartment,
         // totalFree,
         // totalBusy,
         // totalAbsolut,
-        setDepartment,
+        // setDepartment,
         // getDepartment,
     }
 
     const hospitalGroup = {
-        selectedHospital,
+        // selectedHospital,
         // setHospitalAddition,
         // onCollectAll,
     }

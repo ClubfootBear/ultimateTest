@@ -24,7 +24,6 @@ const Content = () => {
                     {TransferSwitcher.showModal && <PatientsTransfer/>}
                     {DischargeSwitcher.showModal && <PatientsDischarge/>}
                     <CardBlock/>
-
                 </div>
             </div>
         </ExpandProvider>
